@@ -1,0 +1,32 @@
+<ons-page ng-controller="LoginControl">
+  <ons-toolbar>
+    <div class="center">Log In</div>
+  </ons-toolbar>
+
+  <div style="text-align: center; width: 80%; margin: 60px auto 0;">
+
+    <input type="email" ng-model="email"
+style="display: block;
+  width: 100%;
+  margin: 0 auto;
+  outline: none;
+  height: 100%;
+  padding-top: 15px;
+  padding-bottom: 16px;"
+  class="text-input--underbar" placeholder="Email" value="">
+    <input type="password" ng-model="password" style="display: block; 
+  width: 100%;
+  margin: 0 auto;
+  outline: none;
+  height: 100%;
+  padding-top: 15px;
+  padding-bottom: 16px;"
+  class="text-input--underbar" placeholder="Password" value="">
+    <br><br>
+    <ons-button var="loginButton" modifier="large" class="login-button" ng-click="LogIn();">Log In</ons-button>
+    <br><br>
+    <ons-button ng-click="app.navi.replacePage('partials/register.html')" modifier="quiet" class="">Don't have an account?</ons-button>
+    <!--<ons-button modifier="quiet" class="forgot-password">Forgot password?</ons-button>-->
+  </div>
+
+</ons-page>

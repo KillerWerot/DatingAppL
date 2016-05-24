@@ -1,0 +1,30 @@
+<!--<div ng-click="GoToProfile(match.id)" ng-repeat="match in matches" class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">{{match.displayname}}  {{match.distance}} km</h3>
+  </div>
+  <div class="panel-body">
+    <img ng-src="{{match.profilepicture}}" style="width:90%;" class="img-rounded">
+  </div>
+</div>-->
+
+
+
+<ons-page >
+<ons-modal var="modal">
+  <ons-icon icon="ion-load-c" spin="true"></ons-icon>
+  <br>
+  <br> Please wait.
+  <br>Loading matches.
+</ons-modal>
+
+    <ons-toolbar>
+        <div class="left"><ons-back-button>Back</ons-back-button></div>
+        <div class="center">Matches</div>
+        <div class="right"><ons-toolbar-button ng-click="menu.openMenu()"><ons-icon icon="ion-ios-people" style="vertical-align: -4px; font-size: 28px;"></ons-icon></ons-toolbar-button></div>
+    </ons-toolbar>
+    <ons-sliding-menu main-page="partials/swipematches.html" menu-page="menu.html" side="left" max-slide-distance="250px" var="menu">
+    </ons-sliding-menu>
+    <ons-list>
+
+        
+</ons-page>

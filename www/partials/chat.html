@@ -1,0 +1,37 @@
+<ons-page ng-controller="ChatControl">
+  <ons-toolbar style="padding-top:10px;">
+        <div class="left">
+            <ons-back-button>Back</ons-back-button>
+        </div>
+    <div class="center">Chat</div>
+  </ons-toolbar>
+    <ons-button ng-click="ClearChat()" modifier="large--cta">
+  Clear
+</ons-button>
+<!--  <ons-list style="background-color:blue; height:60%;"class="chat">
+      <ons-list-item ng-class="{'bubble-alt green': message.mine}" class="bubble" ng-repeat="message in messages">    
+    		  <p>{{message.message}}</p>
+      </ons-list-item>
+      <div id="bottom"></div>
+      </ons-list>
+	
+  </div>
+<div style="position:fixed; bottom:20px;">
+  <textarea ng-model="messagebox" class="textarea textarea--transparent" style="width:70%;height:50px;margin-top:4px;" placeholder="Send message..."></textarea>
+  <ons-button style="float:right;" ng-click="SendMessage();" placeholder="Send message...">Send</ons-button>
+</div>-->
+<div id="chatdiv" style="width:100%; height:80%;  overflow-x:hidden; overflow-y:scroll;" >
+        <div style="width:100%;">
+            <div style="width:100%;">
+                <div ng-class="{'bubble-alt green': message.mine}" class="bubble" ng-repeat="message in messages">    
+        	        <p>{{message.message}}</p>
+                </div>
+            </div>
+        </div>
+
+</div>
+<div style="position:fixed; bottom:20px;">
+  <textarea ng-model="messagebox" class="textarea textarea--transparent" style="width:70%;height:50px;margin-top:4px;" placeholder="Send message..."></textarea>
+  <ons-button style="float:right;" ng-click="SendMessage();" placeholder="Send message...">Send</ons-button>
+</div>
+</ons-page>

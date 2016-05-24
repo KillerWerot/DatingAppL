@@ -1,0 +1,97 @@
+<ons-page ng-controller="EditProfileControl">
+<ons-toolbar>
+        <div class="left"><ons-back-button>Back</ons-back-button></div>
+        <div class="center">Edit Profile</div>
+      </ons-toolbar>
+<hr class="colorgraph">
+<div style="text-align:center;">
+    <div style="text-align:center;">
+		<img ng-src="{{user.profilepicture}}" style="width:50%;" class="img-rounded">
+	</div>
+	<br/>
+	<ons-button ng-click="uploadingpic=true;" ng-show="!uploadingpic" class="btn btn-default">
+		Change Profile Picture
+	</ons-button>
+	<br/>
+	<div ng-show="uploadingpic">
+		<div>
+			<div class="thumbnail">
+				<img ngf-thumbnail="file || 'http://www.placehold.it/200x150/EFEFEF/AAAAAA&text=no+image'">
+			</div>
+			<div>
+				<div style="display:inline-block">
+					<ons-button class="btn btn-danger" style="" ng-click="uploadingpic=false;file=null;">Cancel</ons-button>
+					<div class="btn btn-default" style="" ngf-select ng-model="file" ng-hide="file" name="file" ngf-pattern="'image/*'" ngf-accept="'image/*'" ngf-max-size="20MB" ngf-min-height="100">Select</div>
+				</div>
+				<!--<ons-button type="file" class="btn" ng-show="$flow.files.length" flow-btn flow-attrs="{accept:'image/*'}">Change</ons-button>-->
+				<a class="btn btn-danger" ng-show="file" ng-click="file=null">
+				Remove
+				</a>
+			</div>
+			<p>
+				Only PNG,GIF,JPG files allowed.
+			</p>
+
+			<ons-button class="btn btn-success" ng-show="file && !uploadingAd" ng-click="UploadProfilePicture(file)">Upload</ons-button>
+			<uib-progressbar ng-show="uploadingAd" max="uploadingTotal" value="uploadingProgress"><span style="color:white; white-space:nowrap;">{{uploadingProgress}} / {{uploadingTotal}}</span></uib-progressbar>
+
+		</div>
+	</div>
+	<br/>
+	<div>
+		<h3>
+			LoL Summoner Name
+		</h3>
+		<div class="form-group">
+			<input type="text" class="form-control input-lg" ng-model="summonername" placeholder="Summoner Name" tabindex="3">
+		</div>
+		<ons-button class="btn btn-success" ng-click="UpdateSummonerName(summonername)">Update Name</ons-button>
+		<br/>
+		<div ng-show="user.loldata">
+			<!--LOL-->
+			<h3>
+				{{user.loldata.name}}
+			</h3>
+			<img ng-src="http://ddragon.leagueoflegends.com/cdn/6.5.1/img/profileicon/{{user.loldata.profileIconId}}.png" </div>
+		</div>
+		<hr class="colorgraph">
+		<div ng-repeat="network in socialnetworks">
+			<h3>
+			{{network.networkname}} : <i  ng-show="network.logged" class="fa fa-check"></i> 
+			<ons-button ng-hide="network.logged" ng-click="GetAuthorization(network.index)" class="btn btn-success" ng-click="">Log In</ons-button>
+		</h3>
+		</div>
+		<hr class="colorgraph"> Interests
+		<div class="checkbox">
+			<label>
+      	<input ng-model="user.ranked" type="checkbox"> Ranked
+    	</label>
+		</div>
+		<div class="checkbox">
+			<label>
+      	<input ng-model="user.normal" type="checkbox"> Normales
+    	</label>
+		</div>
+		<div class="checkbox">
+			<label>
+      	<input ng-model="user.meet" type="checkbox"> Conocer
+    	</label>
+		</div>
+		<ons-button class="btn btn-success" ng-click="UpdateInterests()">Update Interests</ons-button>
+		
+		<hr class="colorgraph">
+		<h3>
+			Available Credits: {{user.credits}}
+		</h3>
+		<form id="checkout" style="text-align:center;" method="post" action="{{payURL}}">
+			<label>How many credits are you buying?</label>
+			<input style="width:50%; text-align:center; margin-left:auto; margin-right:auto;" type="number" ng-change="UpdatePayment()" class="form-control" value="10" ng-model="purchasingcredits" />
+			<br/>
+			<div id="payment-form"></div>
+			<ons-button type="submit" class="btn btn-primary" value="Pay">Pay ${{toPay}}</ons-button>
+		</form>
+<br/>
+<br/>
+	</div>
+    
+</ons-page>

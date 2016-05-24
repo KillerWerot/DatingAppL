@@ -1,0 +1,47 @@
+<ons-page ng-controller="EditProfileControl">
+<ons-toolbar>
+        <div class="left"><ons-back-button>Back</ons-back-button></div>
+        <div class="center">Edit Profile</div>
+      </ons-toolbar>
+<hr class="colorgraph">
+<div style="text-align:center;">
+    
+		<hr class="colorgraph"> Interests
+		<div class="checkbox">
+			<label>
+      	<input ng-model="user.ranked" type="checkbox"> Ranked
+    	</label>
+		</div>
+		<div class="checkbox">
+			<label>
+      	<input ng-model="user.normal" type="checkbox"> Normales
+    	</label>
+		</div>
+		<div class="checkbox">
+			<label>
+      	<input ng-model="user.meet" type="checkbox"> Conocer
+    	</label>
+		</div>
+        <hr>
+        <div class="checkbox">
+    		<label>
+      	<input ng-model="user.lfm" type="checkbox"> Looking for Men
+    	</label>
+		</div><div class="checkbox">
+    		<label>
+      	<input ng-model="user.lfw" type="checkbox"> Looking for Women
+    	</label>
+		</div>
+        
+        <select ng-model="user.sex" class="selectpicker">
+          <option value="0" ng-selected="user.sex==0">Male</option>
+          <option value="1" ng-selected="user.sex==1">Female</option>
+        </select>
+        <br/>
+		<ons-button class="btn btn-success" ng-click="UpdateInterests()">Update Interests</ons-button>
+		
+<br/>
+<br/>
+	</div>
+    
+</ons-page>

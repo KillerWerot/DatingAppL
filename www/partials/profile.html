@@ -1,0 +1,164 @@
+
+<style>
+    .profile-card {
+  width: 100%;
+  text-align: center;
+  color: white;
+  padding: 30px 0;
+  line-height: 1.4;
+  background-color: #33393c;
+  text-shadow: rgba(0, 0, 0, 0.4) 0px 1px 0px;
+}
+
+.profile-image {
+  height: 100px;
+  width: 100px;
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+  background-color: black;
+  border 1px solid white;
+  box-shadow:rgba(0, 0, 0, 0.2) 0px 2px 0px 0px;
+  -webkit-box-shadow:rgba(0, 0, 0, 0.2) 0px 2px 0px 0px;
+}
+
+.profile-name {
+  margin: 20px 0 0 0;
+  font-weight: 600;
+  font-size: 17px;
+}
+
+.profile-id {
+  margin: 0 0 5px 0;
+  font-size: 14px;
+  opacity: 0.6;
+}
+
+.profile-desc {
+  font-size: 15px;
+  opacity: 0.6;
+  width: 90%;
+  text-align: center;
+  margin: 0 auto;
+}
+
+.info-col {
+  height: 60px;
+  line-height: 1;
+  padding: 12px 0 12px 4px;
+}
+
+.info-num {
+  font-size: 16px;
+  font-weight: 500;
+  opacity: 0.8;
+}
+
+.info-unit {
+  margin-top: 6px;
+  font-size: 14px;
+  opacity: 0.4;
+}
+</style>
+
+<ons-page style="text-align:center;" ng-controller="ProfileControl">
+    <ons-toolbar>
+        <div class="left">
+            <!--<ons-toolbar-button ng-show="mine" ng-click="app.navi.pushPage('partials/matches.html');"><ons-icon icon="ion-ios-people" style="vertical-align: -4px; font-size: 28px;"></ons-icon></ons-toolbar-button>-->
+            <ons-toolbar-button id="menu" ng-show="mine" ng-click="popover.show($event);"><ons-icon icon="ion-navicon" style="vertical-align: -4px; font-size: 28px;"></ons-icon></ons-toolbar-button>
+            <ons-back-button ng-hide="mine">Back</ons-back-button>
+        </div>
+        <div class="center">Profile</div>
+        <div class="right">
+            <ons-toolbar-button ng-show="mine" ng-click="app.navi.pushPage('partials/matches.html');"><ons-icon icon="ion-ios-people" style="vertical-align: -4px; font-size: 28px;"></ons-icon></ons-toolbar-button>
+          <!--<ons-toolbar-button ng-click="app.navi.pushPage('partials/editprofile.html');" ng-show="mine"><ons-icon icon="ion-gear-a" style="vertical-align: -4px; font-size: 28px;"></ons-icon></ons-toolbar-button>-->
+        </div>
+      </ons-toolbar>
+
+      <div class="profile-card">
+
+        <img ng-src="{{user.profilepicture}}" class="profile-image">
+        <div class="profile-name">{{user.firstname}} {{user.lastname}}</div>
+        <div class="profile-id">@{{user.displayname}}</div>
+        <div class="profile-desc">{{user.location}}</div>
+        <div class="profile-desc">{{user.age}} years</div>
+        <div ng-hide="mine" class="profile-desc">{{distance}} km <i class="fa fa-map-marker"></i></div>
+        <div class="profile-desc">{{user.bio}}</div>
+
+      </div>
+        <!--
+      <ons-list>
+        <ons-list-item>
+          <ons-row>
+            <ons-col class="info-col">
+              <div class="info-num">87</div>
+              <div class="info-unit">Comments</div>
+            </ons-col>
+            <ons-col class="info-col">
+              <div class="info-num">40</div>
+              <div class="info-unit">Following</div>
+            </ons-col>
+            <ons-col class="info-col">
+              <div class="info-num">38</div>
+              <div class="info-unit">Followers</div>
+            </ons-col>
+          </ons-row>
+        </ons-list-item>
+      </ons-list>
+        -->
+        
+    <div style="text-align:center; margin-left:auto; margin-right:auto; ng-show="user.loldata">
+        	<hr class="colorgraph">
+			<div style="text-align:center; margin-left:auto; margin-right:auto; display: inline-block;"  >
+				<img style="text-align:center;" ng-repeat="champion in user.loldata.stats.champions" ng-src="http://ddragon.leagueoflegends.com/cdn/6.8.1/img/champion/{{champion.imagename}}.png" >
+			</div>
+			<hr class="colorgraph">
+		<!--LOL-->
+		<h3 style="text-align:center;">
+				{{user.loldata.name}}
+			</h3>
+            
+		<img style="text-align:center; margin-left:auto; margin-right:auto; width:32%; height:auto;" ng-src="http://ddragon.leagueoflegends.com/cdn/6.8.1/img/profileicon/{{user.loldata.profileIconId}}.png" </div>
+	</div>    
+    
+    
+    <hr class="colorgraph">
+    <div style="text-align:center;" ng-repeat="network in user.socialnetworks">
+		<h3>
+			{{network.networkname}} : {{network.followers}} {{network.followerterm}}
+		</h3>	
+	</div>
+<div ng-show="!mine">
+<hr class="colorgraph">
+<h3>
+	Intereses Comunes
+</h3>
+<h2 ng-show="user.ranked">Ranked</h2>
+<h2 ng-show="user.normal">Normales</h2>
+<h2 ng-show="user.meet">Conocer</h2>
+
+
+<hr class="colorgraph">
+	<div style="text-align:center;" ng-show="user.relationship==0">
+		<!--<button class="btn btn-danger" ng-click="">Report</button>-->
+		<ons-button style="width:48%;" class="btn btn-default" ng-click="SendRequestCredit()">Ficha</ons-button>
+		<ons-button style="width:48%;" class="btn btn-primary" ng-click="SendRequest()">Play</ons-button>
+	</div>
+	<div style="text-align:center;" ng-show="user.relationship==1">	
+		<h3>
+			Waiting for Response...
+		</h3>
+	</div>
+	<div style="text-align:center;"  ng-show="user.relationship==2">	
+		<h3>
+			<ons-button class="btn btn-success" ng-click="AcceptRequest()">Accept Request</ons-button>
+		</h3>
+	</div>
+	<div style="text-align:center;" ng-show="user.relationship==3">	
+		<h3>
+			<ons-button class="btn btn-success" ng-click="Chat()">Chat</ons-button>
+		</h3>
+	</div>
+</div>
+        
+      <br>
+</ons-page>

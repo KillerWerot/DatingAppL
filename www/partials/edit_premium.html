@@ -1,0 +1,23 @@
+<ons-page ng-controller="EditProfileControl">
+<ons-toolbar>
+        <div class="left"><ons-back-button>Back</ons-back-button></div>
+        <div class="center">Edit Profile</div>
+      </ons-toolbar>
+<hr class="colorgraph">
+<div style="text-align:center;">
+    
+		<h3>
+			Available Credits: {{user.credits}}
+		</h3>
+		<form id="checkout" style="text-align:center;" method="post" action="{{payURL}}">
+			<label>How many credits are you buying?</label>
+			<input style="width:50%; text-align:center; margin-left:auto; margin-right:auto;" type="number" ng-change="UpdatePayment()" class="form-control" value="10" ng-model="purchasingcredits" />
+			<br/>
+			<div id="payment-form"></div>
+			<ons-button type="submit" class="btn btn-primary" value="Pay">Pay ${{toPay}}</ons-button>
+		</form>
+<br/>
+<br/>
+	</div>
+    
+</ons-page>

@@ -1,0 +1,110 @@
+<ons-page ng-controller="RegisterControl">
+  <ons-toolbar>
+    <div class="center">Register</div>
+  </ons-toolbar>
+
+  <div style="text-align: center; width: 80%; margin: 60px auto 0;">
+<h3 style="text-align:center; color:red;">
+          <b>{{errorMessage}}</b>
+        </h3>
+        
+    <input type="text" ng-model="firstname"
+style="display: inline-block;
+  width: 45%;
+  margin: 0 auto;
+  outline: none;
+  height: 100%;
+  padding-top: 15px;
+  padding-bottom: 16px;"
+  class="text-input--underbar" placeholder="First Name" value="">
+  
+    <input type="text" ng-model="lastname" style="display: inline-block; 
+  width: 45%;
+  margin: 0 auto;
+  outline: none;
+  height: 100%;
+  padding-top: 15px;
+  padding-bottom: 16px;"
+  class="text-input--underbar" placeholder="Last Name" value="">
+  
+  <input type="text" ng-model="displayname" style="display: inline-block; 
+  width: 100%;
+  margin: 0 auto;
+  outline: none;
+  height: 100%;
+  padding-top: 15px;
+  padding-bottom: 16px;"
+  class="text-input--underbar" placeholder="Display Name" value="">
+  
+  <input type="email" ng-model="email" style="display: inline-block; 
+  width: 100%;
+  margin: 0 auto;
+  outline: none;
+  height: 100%;
+  padding-top: 15px;
+  padding-bottom: 16px;"
+  class="text-input--underbar" placeholder="Email" value="">
+  <br/>
+  <div>
+  <a style="padding-top:10px; float:left;">Birthday: </a>
+  <input type="date" ng-model="birthday" style="display: inline-block; 
+  width: 60%;
+  outline: none;
+  height: 100%;
+  padding-top: 15px;
+  padding-bottom: 16px;"
+  class="text-input--underbar" placeholder="Birthday" onfocus="(this.type='date')" value="">
+  </div>
+  <br/>
+  <input type="text" ng-blur="" ng-model="state" style="display: inline-block; 
+  width: 100%;
+  margin: 0 auto;
+  outline: none;
+  height: 100%;
+  padding-top: 15px;
+  padding-bottom: 16px;"
+  class="text-input--underbar" placeholder="Location" value="" details="locationdetails" googleplace>
+  <br/>
+  
+  <div class="checkbox">
+        	<label>
+      	<input ng-init="" ng-model="lookingformen" type="checkbox"> Looking for Men
+    	</label>
+		</div><div class="checkbox">
+    		<label>
+      	<input ng-init="" ng-model="lookingforwomen" type="checkbox"> Looking for Women
+    	</label>
+		</div>
+        <br/>
+        <select ng-init="sex=0" ng-model="sex" class="selectpicker">
+          <option value="0" ng-selected="sex==0;">Male</option>
+          <option value="1" ng-selected="sex==1;">Female</option>
+        </select>
+        <div ng-init="sex=0; lookingformen=false; lookingforwomen=true;"></div>
+    <br/>
+  
+  <input type="password" ng-model="password"
+style="display: inline-block;
+  width: 100%;
+  margin: 0 auto;
+  outline: none;
+  height: 100%;
+  padding-top: 15px;
+  padding-bottom: 16px;"
+  class="text-input--underbar" placeholder="Password" value="">
+  
+    <input type="password" ng-model="passwordcheck" style="display: inline-block; 
+  width: 100%;
+  margin: 0 auto;
+  outline: none;
+  height: 100%;
+  padding-top: 15px;
+  padding-bottom: 16px;"
+  class="text-input--underbar" placeholder="Confirm Password" value="">
+  
+    <br><br>
+    <ons-button var="registerButton" modifier="large" class="login-button" ng-click="registerButton.startSpin(); SendRegister();">Register</ons-button>
+
+  </div>
+
+</ons-page>
