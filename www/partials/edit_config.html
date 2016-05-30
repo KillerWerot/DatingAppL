@@ -1,4 +1,4 @@
-<ons-page ng-controller="EditProfileControl">
+<ons-page modifier="full_bg" ng-controller="EditProfileControl">
 <ons-toolbar>
         <div class="left"><ons-back-button>Back</ons-back-button></div>
         <div class="center">Edit Profile</div>
@@ -8,14 +8,20 @@
     
 	<br/>
 	<div>
-		<h3>
-			LoL Summoner Name
-		</h3>
-		<div class="form-group">
-			<input type="text" class="form-control input-lg" ng-model="summonername" placeholder="Summoner Name" tabindex="3">
-		</div>
-		<ons-button class="btn btn-success" ng-click="UpdateSummonerName(summonername)">Update Name</ons-button>
+    
+        <input type="text" ng-model="summonername"
+        style="display: block;
+          width: 100%;
+          margin: 0 auto;
+          outline: none;
+          height: 100%;
+          padding-top: 15px;
+          padding-bottom: 16px;"
+          class="text-input--underbar" placeholder="Summoner Name" value="">
+    <br/>
+		<ons-button ng-click="UpdateSummonerName(summonername)">Update Name</ons-button>
 		<br/>
+        <br/>
 		<div ng-show="user.loldata">
 			<!--LOL-->
 			<h3>
@@ -27,11 +33,7 @@
 	
 	</div>
     
-    <div id="share-buttons">
-    
+    <br/>
 
-    <button ng-click="window.plugins.socialsharing.share('Share this DatingApp, Add links to store when published')">Share</button>
-
-</div>
-    
+    <ons-button ng-click="window.plugins.socialsharing.share('Share this DatingApp, Add links to store when published')">Share</ons-button>
 </ons-page>

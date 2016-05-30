@@ -1,4 +1,4 @@
-<ons-page ng-controller="EditProfileControl">
+<ons-page modifier="full_bg" ng-controller="EditProfileControl">
 <ons-toolbar>
         <div class="left"><ons-back-button>Back</ons-back-button></div>
         <div class="center">Edit Profile</div>
@@ -13,27 +13,34 @@
 		Change Profile Picture
 	</ons-button>
 	<br/>
+
 	<div ng-show="uploadingpic">
 		<div>
 			<div class="thumbnail">
-				<img ngf-thumbnail="file || 'http://www.placehold.it/200x150/EFEFEF/AAAAAA&text=no+image'">
+				<img  style="width:80%; height: auto;" ng-show="file" ng-src="{{file}}">
 			</div>
 			<div>
-				<div style="display:inline-block">
-					<ons-button class="btn btn-danger" style="" ng-click="uploadingpic=false;file=null;">Cancel</ons-button>
-					<div class="btn btn-default" style="" ngf-select ng-model="file" ng-hide="file" name="file" ngf-pattern="'image/*'" ngf-accept="'image/*'" ngf-max-size="20MB" ngf-min-height="100">Select</div>
+				<div style="padding-bottom:5px; display:inline-block">
+				<!--	<ons-button class="btn btn-danger" style="" ng-click="uploadingpic=false;file=null;">Cancel</ons-button>
+					<ons-button class="btn btn-default" style="" ngf-select ng-model="file" ng-hide="file" name="file" ngf-pattern="'image/*'" ngf-accept="'image/*'" ngf-max-size="20MB" ngf-min-height="100">Select</ons-button>-->
+                    <ons-button ng-click="GetProfile()">Take Picture</ons-button>
+                    <ons-button ng-click="GetProfile(true)">Choose from Library</ons-button>
 				</div>
 				<!--<ons-button type="file" class="btn" ng-show="$flow.files.length" flow-btn flow-attrs="{accept:'image/*'}">Change</ons-button>-->
-				<a class="btn btn-danger" ng-show="file" ng-click="file=null">
+                <br/>
+                <ons-button style="padding-bottom:10px; padding-top:10px;" class="btn btn-danger" ng-show="file" ng-click="file=null">
 				Remove
-				</a>
+				</ons-button>
+                <br/>
+                <br/>
+                <ons-button style="padding-top:10px;" class="btn btn-success" ng-show="file && !uploadingAd" ng-click="UploadProfilePicture(file)">Upload</ons-button>
 			</div>
-			<p>
-				Only PNG,GIF,JPG files allowed.
-			</p>
 
-			<ons-button class="btn btn-success" ng-show="file && !uploadingAd" ng-click="UploadProfilePicture(file)">Upload</ons-button>
-			<uib-progressbar ng-show="uploadingAd" max="uploadingTotal" value="uploadingProgress"><span style="color:white; white-space:nowrap;">{{uploadingProgress}} / {{uploadingTotal}}</span></uib-progressbar>
+			
+                
+            <p>
+    			{{progress}}
+			</p>
 
 		</div>
 	</div>

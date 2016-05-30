@@ -13,7 +13,11 @@
 .profile-image {
   height: 100px;
   width: 100px;
-  border-radius: 50%;
+  
+}
+
+.oldimg{
+    border-radius: 50%;
   -webkit-border-radius: 50%;
   background-color: black;
   border 1px solid white;
@@ -60,7 +64,7 @@
 }
 </style>
 
-<ons-page style="text-align:center;" ng-controller="ProfileControl">
+<ons-page modifier="full_bg" style="text-align:center;" ng-controller="ProfileControl">
     <ons-toolbar>
         <div class="left">
             <!--<ons-toolbar-button ng-show="mine" ng-click="app.navi.pushPage('partials/matches.html');"><ons-icon icon="ion-ios-people" style="vertical-align: -4px; font-size: 28px;"></ons-icon></ons-toolbar-button>-->
@@ -76,7 +80,7 @@
 
       <div class="profile-card">
 
-        <img ng-src="{{user.profilepicture}}" class="profile-image">
+        <img ng-src="{{user.profilepicture}}" ng-style="{'border-image':'url(images/' + imagename + ') 30 round'}" class="profile-image borderimg">
         <div class="profile-name">{{user.firstname}} {{user.lastname}}</div>
         <div class="profile-id">@{{user.displayname}}</div>
         <div class="profile-desc">{{user.location}}</div>

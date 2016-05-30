@@ -39,11 +39,24 @@
   <link rel="stylesheet" href="css/colorgraph.css">
   <link rel="stylesheet" href="css/chat.css">
   <link rel="stylesheet" href="css/tinder.css">
+  <link rel="stylesheet" href="css/onsen-css-components.css">
   
+  <script>
+      document.addEventListener("deviceready", onDeviceReady, false);
+function onDeviceReady() {
+}
+  </script>
   <!-- Latest compiled and minified CSS -->
   
   
   <style type="text/css">
+  
+  .borderimg { 
+    border: 10px solid transparent;
+  /*  -webkit-border-image: url(images/marcoBronce1.png) 30 round; */
+   /* -o-border-image: url(images/marcoBronce1.png) 30 round; */
+  /*  border-image: url(images/marcoBronce1.png) 30 round;*/
+}
  
 #share-buttons img {
 width: 35px;
@@ -82,11 +95,15 @@ display: inline;
       color: #999;
       float: right;
     }
+    
+    .page--full_bg__background {
+  background: #00ff00 url("images/backgroundLoL3.png") no-repeat fixed center;
+}
   </style>
 </head>
 
 
-<body>    
+<body style="background-image: url('http://static.vecteezy.com/system/resources/previews/000/094/491/original/polygonal-texture-background-vector.jpg');">    
 
   <ons-navigator page="partials/login.html" var="app.navi"></ons-navigator>
 
@@ -142,12 +159,12 @@ display: inline;
     
     <ons-template id="popover.html">
   <ons-popover direction="down" cancelable>
-    <ons-list>
-      <ons-list-item ng-click="popover.hide(); app.navi.pushPage('partials/edit_profile.html');" modifier="tappable">Perfil</ons-list-item>
-      <ons-list-item ng-click="popover.hide(); app.navi.pushPage('partials/edit_config.html');" modifier="tappable">Ajustes</ons-list-item>
-      <ons-list-item ng-click="popover.hide(); app.navi.pushPage('partials/edit_busqueda.html');" modifier="tappable">Preferencias de Busqueda</ons-list-item>
-      <ons-list-item modifier="tappable">Ayuda</ons-list-item>
-      <ons-list-item ng-click="popover.hide(); app.navi.pushPage('partials/edit_premium.html');" modifier="tappable">Premium</ons-list-item>
+    <ons-list style="color:black;">
+      <ons-list-item  style="color:black;" ng-click="popover.hide(); app.navi.pushPage('partials/edit_profile.html');" modifier="tappable">Perfil</ons-list-item>
+      <ons-list-item  style="color:black;" ng-click="popover.hide(); app.navi.pushPage('partials/edit_config.html');" modifier="tappable">Ajustes</ons-list-item>
+      <ons-list-item  style="color:black;" ng-click="popover.hide(); app.navi.pushPage('partials/edit_busqueda.html');" modifier="tappable">Preferencias de Busqueda</ons-list-item>
+      <ons-list-item  style="color:black;" modifier="tappable">Ayuda</ons-list-item>
+      <ons-list-item  style="color:black;" ng-click="popover.hide(); app.navi.pushPage('partials/edit_premium.html');" modifier="tappable">Premium</ons-list-item>
     </ons-list>
   </ons-popover>
 </ons-template>

@@ -1,4 +1,4 @@
-<ons-page ng-controller="MatchSwipeControl">
+<ons-page modifier="full_bg" ng-controller="MatchSwipeControl">
 <div style="margin:10px;">
    <cardchoice like="Like" dislike="Dislike" match="match" ng-style="{display:($first ? 'block' : 'none')}" ng-repeat="match in matches" ng-init="">
        <h1 style="text-align:center;">{{match.displayname}}</h1>

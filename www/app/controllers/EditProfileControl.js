@@ -53,7 +53,72 @@ DatingAppControllers.controller("EditProfileControl", function($scope, $http, $r
 
     });
   });
+  
+  
+  function onSuccess(imageData) {
+    console.log(imageData);
+    $scope.$apply(function () {
+           $scope.file = imageData;
+        });
+    
+}
 
+
+
+function onFail(message) {
+   // alert('Failed because: ' + message);
+}
+
+ function uploadPhoto(imageURI) {
+     console.log("GOT TO");
+            var options = new FileUploadOptions();
+            options.fileKey="file";
+            options.fileName=imageURI.substr(imageURI.lastIndexOf('/')+1);
+            options.mimeType="image/jpeg";
+            console.log("Made options");
+            var params = new Object();
+            console.log("NAME: " + options.fileName);
+            params.process = "UploadProfilePicture";
+ 
+            options.params = params;
+            options.chunkedMode = false;
+            console.log("Made process");
+            var ft = new FileTransfer();
+            $scope.progress = 0;
+            ft.onprogress = function (progressEvent){
+                 $scope.$apply(function () {
+                   $scope.progress = Math.floor((progressEvent.loaded / progressEvent.total) * 100) + "%"; 
+                   
+                });
+            };
+            ft.upload(imageURI, phpurl, win, fail, options);
+        }
+ 
+        function win(r) {
+            console.log("Code = " + r.responseCode);
+            console.log("Response = " + r.response);
+            console.log("Sent = " + r.bytesSent);
+           // alert(r.response);
+           if (r.response == "1"){
+               app.navi.replacePage('partials/profile.html');
+           }
+        }
+ 
+        function fail(error) {
+           // alert("An error has occurred: Code = " + error.code);
+        }
+
+  $scope.GetProfile = function(library){
+     var source = Camera.PictureSourceType.CAMERA;
+     if (library){
+         source = Camera.PictureSourceType.PHOTOLIBRARY;
+     }
+    navigator.camera.getPicture(onSuccess, onFail, {quality: 50, targetWidth: 512,
+            targetHeight: 512, sourceType: source});
+  };
+
+
+    
 
   $scope.UpdatePayment = function() {
     console.log($scope.rate);
@@ -88,6 +153,7 @@ DatingAppControllers.controller("EditProfileControl", function($scope, $http, $r
         Account.CheckLogin(function() {
           $scope.user = Account.user;
         });
+        app.navi.replacePage('partials/profile.html');
       }
     });
   }
@@ -107,6 +173,12 @@ DatingAppControllers.controller("EditProfileControl", function($scope, $http, $r
   };
 
   $scope.UploadProfilePicture = function(file) {
+
+    if (file){
+        uploadPhoto(file);
+    }
+
+return;
     if (file) {
       Upload.upload({
         url: phpurl,

@@ -38,7 +38,32 @@ DatingAppControllers.controller("ProfileControl", function($scope, $http, $route
     $scope.user.age = calculateAge($scope.user.birthday);
 		gotUser = true;
         
-        console.log(response.loldata.league);
+        var imageName = "";
+        switch ($scope.user.loldata.league.tier){
+            case "BRONZE":
+                imageName = "marcoBronce1.png"
+            break;
+            case "SILVER":
+                imageName = "marcoPlata1.png"
+            break;
+            case "GOLD":
+                imageName = "marcoOro1.png"
+            break;
+            case "PLATINUM":
+                imageName = "marcoPlatino1.png"
+            break;
+            case "DIAMOND":
+                imageName = "diamond.png"
+            break;
+            case "MASTER":
+                imageName = "master.png"
+            break;
+            case "CHALLENGER":
+                imageName = "blueborder.gif"
+            break;
+        }
+        $scope.imagename = imageName;
+
   });
   
   $scope.Chat = function(){

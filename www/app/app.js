@@ -58,8 +58,10 @@ app.directive('cardchoice', [ function() {
         },
         transclude: 'true',
         replace: 'false',
-        template: "<div ng-swipe-right='likecall()' ng-swipe-left='dislikecall()'><ng-transclude></ng-transclude><div style='text-align:center;'><ons-button style='width:48%;' class='btn btn-default' ng-click='likecredit()'>Ficha</ons-button>"
-    + "	<ons-button style='width:48%;' class='btn btn-primary' ng-click='likecall()'>Play</ons-button></div>",
+        template: "<div ng-swipe-right='likecall()' ng-swipe-left='dislikecall()'><br/><ng-transclude></ng-transclude><br/><div style='text-align:center;'>" +
+        "<img src='images/buttons/report.png' style='width:30%;' ng-click='dislikecall()'> "
+        + "<img src='images/buttons/FICHA.png' style='width:30%;' ng-click='likecredit()'> "
+    + "	<img src='images/buttons/add.png' style='width:30%;' ng-click='likecall()'></div>",
         link: function(scope, element, attrs, model) {
             scope.likecall=function(){
                     console.log("SDF");
