@@ -41,9 +41,17 @@
             <p>
     			{{progress}}
 			</p>
+            
+            <br/>
+            
 
 		</div>
 	</div>
 	<br/>
-    
+    <div ng-repeat="network in socialnetworks">
+    		<h3>
+			{{network.networkname}} : <i  ng-show="network.logged" class="fa fa-check"></i> 
+			<ons-button ng-hide="network.logged" ng-click="GetAuthorization(network.index)" class="btn btn-success" ng-click="">Log In</ons-button>
+		</h3>
+		</div>
 </ons-page>

@@ -37,7 +37,6 @@ DatingAppControllers.controller("ProfileControl", function($scope, $http, $route
     $scope.user.birthday = new Date(dateStrings[0], dateStrings[1], dateStrings[2], 0, 0, 0, 0);
     $scope.user.age = calculateAge($scope.user.birthday);
 		gotUser = true;
-        
         var imageName = "";
         switch ($scope.user.loldata.league.tier){
             case "BRONZE":
